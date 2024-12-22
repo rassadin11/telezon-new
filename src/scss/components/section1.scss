@@ -35,6 +35,12 @@
 			}
 		}
 
+		@media (max-width: 992px) {
+			& > *:last-child {
+				padding: 0;
+			}
+		}
+
 		& > * {
 			padding-left: 0;
 		}

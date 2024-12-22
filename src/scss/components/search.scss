@@ -1,0 +1,29 @@
+.search-input__wrapper {
+	width: 100%;
+	background: #fbfbfe;
+	border: 1px solid #4d5eff;
+	border-radius: 8px;
+	padding: 1rem;
+
+	& svg {
+		width: 21px;
+		height: 21px;
+		margin-right: 1rem;
+
+		& > use {
+			stroke: #4d5eff;
+		}
+	}
+}
+
+.search-input {
+	font-size: 16px;
+	line-height: 22px;
+	border: none;
+	background: #fbfbfe;
+	outline: none;
+	flex: 1 1 auto;
+	&::placeholder {
+		color: rgba(77, 94, 255, 0.4);
+	}
+}
