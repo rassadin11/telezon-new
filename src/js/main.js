@@ -1,66 +1,312 @@
-/**
- * !(i)
- * Код попадает в итоговый файл, только когда вызвана функция, например FLSFunctions.spollers();
- * Или когда импортирован весь файл, например import "files/script.js";
- * Неиспользуемый код в итоговый файл не попадает.
+// dropdown menu pc
 
- * Если мы хотим добавить модуль следует его раскомментировать
- */
-// import { MousePRLX } from './libs/parallaxMouse'
-// import AOS from 'aos'
-// import Swiper, { Navigation, Pagination } from 'swiper';
+const dropdowns = document.querySelectorAll('.menu__dropdown');
 
-import { BaseHelpers } from './helpers/base-helpers';
-import { PopupManager } from './modules/popup-manager';
-import { BurgerMenu } from './modules/burger-menu';
-import { Tabs } from './modules/tabs';
-import { Accordion } from './modules/accordion';
+function dropdownMenu() {
+    if (document.body.clientWidth > 1500) {
+        dropdowns.forEach((item) => {
+            const navLink = item.querySelector('.nav-link');
 
-BaseHelpers.checkWebpSupport();
+            item.addEventListener('mouseover', (e) => {
+                if (e.target.classList.contains('nav-link')) {
+                    item.querySelector('.dropdown-menu').classList.add('active');
+                    navLink.querySelector('.menu__arrow-dropdown').classList.add('active');
+                }
+            })
 
-BaseHelpers.calcScrollbarWidth();
+            item.addEventListener('mouseleave', () => {
+                item.querySelector('.dropdown-menu').classList.remove('active');
+                navLink.querySelector('.menu__arrow-dropdown').classList.remove('active');
+            })
+        })
+    } else {
+        dropdowns.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                if (!item.classList.contains('.uslugi__item')) {
+                    dropdowns.forEach((elem, idx) => {
+                        if (idx !== index) {
+                            elem.classList.remove('active')
+                            elem.querySelector('.nav-link').classList.remove('active');
+                            elem.querySelector('.dropdown-menu').classList.remove('active');
+                        }
+                    });
+                }
 
-BaseHelpers.addTouchClass();
+                item.classList.toggle('active');
+                item.querySelector('.nav-link').classList.toggle('active');
+                item.querySelector('.dropdown-menu').classList.toggle('active');
+            })
+        })
 
-BaseHelpers.addLoadedClass();
+        const uslugi = document.querySelectorAll('.item-uslugi__title');
+        uslugi.forEach((item) => {
+            item.addEventListener('click', (e) => {
+                document.querySelector('.mobile__sub-menu').classList.toggle('active')
+                document.querySelector('.header__menu .navbar-nav').classList.add('hide')
 
-BaseHelpers.headerFixed();
+                configScreen(item);
+                e.stopPropagation();
+            })
+        })
 
-/**
- * Открытие/закрытие модальных окон
- * Чтобы модальное окно открывалось и закрывалось
- * На окно повешай атрибут data-popup="<название окна>"
- * На кнопку, которая вызывает окно повешай атрибут data-type="<название окна>"
+        const links = document.querySelectorAll(".nav-link")
+        links.forEach(item => {
+            if (item.querySelector(".menu__arrow-dropdown")) {
+                item.addEventListener('click', (e) => {
+                    if (!item.classList.contains('active')) {
+                        e.preventDefault();
+                    }
+                })
+            }
+        })
+    }
+}
 
- * На обертку(.popup) окна добавь атрибут '[data-close-overlay]'
- * На кнопку для закрытия окна добавь класс '.button-close'
- * */
-new PopupManager();
+dropdownMenu();
 
-/**
- *  Модуль для работы с меню (Бургер)
- * */
-new BurgerMenu().init();
+window.onresize = () => {
+    dropdownMenu();
+};
 
-/**
- *  Библиотека для анимаций
- *  документация: https://michalsnik.github.io/aos
- * */
-// AOS.init();
+function configScreen(item) {
+    const children = item.parentNode.children;
+    const ul = document.querySelector('.sub-list.uslugi-mobile')
+    ul.innerHTML = '';
 
-/**
- * Параллакс мышей
- * */
-// new MousePRLX();
+    document.querySelector('.menu-social p').innerHTML = children[0].querySelector("span").innerHTML;
+    let count = 1;
 
-new Tabs('tabs-example', {
-	onChange: (data) => {
-		console.log(data);
-	},
-});
+    while (count < children.length - 1) {
+        const li = document.createElement('li');
+        li.classList.add('sub-list__item');
+        li.classList.add('tab');
 
-new Accordion('.accordion', {
-	shouldOpenAll: false, // true
-	defaultOpen: [], // [0,1]
-	collapsedClass: 'open',
-});
+        if (children[count + 1].nodeName === 'UL' && children[count].nodeName === 'A') {
+            let lis = '';
+
+            children[count + 1].querySelectorAll(':scope > li').forEach(item => {
+                if (!item.querySelector('ul')) {
+                    lis += `<li class="sub-list__item"><a class="dropdown-item" href="#">${item.querySelector('a').innerHTML}</a></li>`
+                } else {
+                    let temp;
+                    const deep_li = item.querySelectorAll('li')
+
+                    deep_li.forEach(elem => {
+                        temp = `<li class="sub-list__item deep-list"><a class="dropdown-item" href="#">${elem.querySelector('a').innerHTML}</a></li>`
+                    })
+
+                    lis += `
+                        <a class="nested-dropdown align-items-center d-flex tab-title nav-link sub-list__link justify-content-between" href="#" role="button">
+                            <span class="menu_uslugi">${item.querySelector('a').innerHTML}</span>
+                            <svg class="menu__arrow-dropdown">
+                                <use href="../images/sprite.svg#menu_arrow"></use>
+                            </svg>
+                        </a>
+
+                        <ul class="dropdown-menu header__dropdown default-dropdown right list tab-list deep-ul" aria-labelledby="menu3">
+                           ${temp}
+                        </ul>
+                    `
+                }
+            })
+
+            li.insertAdjacentHTML('beforeend', `
+                <a class="align-items-center d-flex tab-title nav-link sub-list__link justify-content-between" href="#" role="button">
+					<span class="menu_uslugi">${children[count].innerHTML}</span>
+					<svg class="menu__arrow-dropdown">
+						<use href="../images/sprite.svg#menu_arrow"></use>
+					</svg>
+				</a>
+
+				<ul class="dropdown-menu header__dropdown default-dropdown right list tab-list" aria-labelledby="menu3">
+                    ${lis}
+				</ul>
+            `)
+
+            count += 2;
+        } else {
+            li.insertAdjacentHTML('beforeend', `
+                <a class="align-items-center d-flex nav-link" href="${children[count].href}" role="button">
+					${children[count].innerHTML}
+				</a>`)
+            count++;
+        }
+
+        ul.append(li)
+    }
+
+    const links = document.querySelectorAll(".nav-link")
+    links.forEach(item => {
+        if (item.querySelector(".menu__arrow-dropdown")) {
+            item.addEventListener('click', (e) => {
+                if (!e.target.classList.contains('menu_uslugi')) {
+                    e.preventDefault();
+                }
+            })
+        }
+    })
+
+    const sublist = document.querySelectorAll('.sub-list__link')
+
+    sublist.forEach((item, i) => {
+        item.addEventListener('click', (e) => {
+            sublist.forEach((elem, idx) => {
+                if (i !== idx && elem.nextElementSibling !== item.parentNode) {
+                    elem.classList.remove('active');
+                    const dropdown = elem.parentNode.querySelector('.default-dropdown');
+                    dropdown.classList.remove('active');
+                    dropdown.style.maxHeight = 0;
+                }
+            })
+
+            if (!item.classList.contains('active')) {
+                item.parentNode.querySelector('.default-dropdown').style.maxHeight = Array.from(ul.querySelectorAll('.default-dropdown li')).reduce((acc, item) => acc += item.clientHeight, 0) + 10 + 'px'
+            } else {
+                item.parentNode.querySelector('.default-dropdown').style.maxHeight = 0
+            }
+
+            item.classList.toggle('active');
+            item.parentNode.querySelector('.default-dropdown').classList.toggle('active')
+        })
+    })
+}
+
+document.querySelector('.sub-menu__arrow-dropdown').addEventListener('click', () => {
+    document.querySelector('.mobile__sub-menu').classList.remove('active')
+    document.querySelector('.header__menu .navbar-nav').classList.remove('hide')
+})
+
+// burger large screens
+const burger = document.querySelector('.burger');
+const menu = document.querySelector('.header__menu');
+const background = document.querySelector('.background-mobile');
+const cross = document.querySelectorAll('.cross')
+
+function isBurgerOpen() {
+    return burger.classList.contains('active');
+}
+
+function changeMenu() {
+    burger.classList.remove('active');
+    menu.classList.remove('active');
+    background.classList.remove('active');
+
+    burger.classList.add('hide');
+    menu.classList.add('hide');
+    background.classList.add('hide');
+
+    setTimeout(() => {
+        burger.classList.remove('hide');
+        menu.classList.remove('hide');
+        background.classList.remove('hide');
+    }, 300)
+
+
+    dropdowns.forEach(item => {
+        item.classList.remove('active');
+        item.querySelector('.nav-link').classList.remove('active');
+        item.querySelector('.dropdown-menu').classList.remove('active');
+
+        setTimeout(() => {
+            document.querySelector('.mobile__sub-menu').classList.remove('active')
+        }, 300)
+    })
+}
+
+burger.addEventListener('click', () => {
+    if (!isBurgerOpen) {
+        document.body.classList.remove('overflow-hidden')
+        changeMenu();
+    } else {
+        burger.classList.add('active');
+        menu.classList.add('active');
+        background.classList.add('active');
+        document.body.classList.add('overflow-hidden')
+    }
+})
+
+cross.forEach(item => {
+    item.addEventListener('click', () => {
+        if (isBurgerOpen) {
+            document.body.classList.remove('overflow-hidden')
+            changeMenu();
+        } else {
+            burger.classList.add('active');
+            menu.classList.add('active');
+            background.classList.add('active');
+            document.body.classList.add('overflow-hidden')
+        }
+    })
+})
+
+background.addEventListener('click', () => {
+    if (isBurgerOpen) {
+        changeMenu();
+    } else {
+        burger.classList.add('active');
+        menu.classList.add('active');
+        background.classList.add('active');
+    }
+})
+
+// main
+
+function detecDevice() {
+    if (navigator.userAgent.match(/Android/i)
+        || navigator.userAgent.match(/webOS/i)
+        || navigator.userAgent.match(/iPhone/i)
+        || navigator.userAgent.match(/iPad/i)
+        || navigator.userAgent.match(/iPod/i)
+        || navigator.userAgent.match(/BlackBerry/i)
+        || navigator.userAgent.match(/Windows Phone/i)) {
+        return true
+    } else {
+        return false
+    }
+}
+
+const isMobile = detecDevice();
+
+if (isMobile) {
+    document.querySelectorAll('.add-scroll').forEach(item => {
+        item.classList.add('xs-x-scroll')
+    })
+}
+
+// tabs
+
+const tabsServices = document.querySelectorAll('.tabs-services > .tab')
+
+tabsServices.forEach((tab, index) => {
+    tab.addEventListener('click', () => {
+        tabsServices.forEach((item, idx) => {
+            if (index !== idx) {
+                item.classList.remove('active')
+                item.querySelector('.tab-title').classList.remove('active')
+                item.querySelector('.tab-list').classList.remove('active');
+            }
+        })
+
+        tab.classList.toggle('active')
+        tab.querySelector('.tab-title').classList.toggle('active')
+        tab.querySelector('.tab-list').classList.toggle('active');
+    })
+})
+
+// arrow
+
+const arrow = document.querySelector('.arrow-wrapper');
+
+if (document.body.getBoundingClientRect().y === 0) {
+    arrow.classList.add('hidden')
+} else {
+    arrow.classList.remove('hidden')
+}
+
+window.addEventListener('scroll', e => {
+    if (document.body.getBoundingClientRect().y === 0) {
+        arrow.classList.add('hidden')
+    } else {
+        arrow.classList.remove('hidden')
+    }
+})

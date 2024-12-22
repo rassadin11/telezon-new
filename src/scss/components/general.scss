@@ -1,0 +1,36 @@
+.t-btn {
+	color: var(--white-text-color);
+	padding: 0.5rem 1rem;
+	background: var(--blue-color);
+	border-radius: 8px;
+	border: none;
+
+	&.pink {
+		background: var(--pink-color);
+	}
+}
+
+.title {
+	font-family: Raleway;
+	font-weight: 700;
+	font-size: 67px;
+	line-height: 79px;
+	color: var(--almost-black-color);
+
+	@media (max-width: 992px) {
+		font-size: 42px;
+		line-height: 1.2;
+	}
+
+	@media (max-width: 768px) {
+		font-size: 30px;
+	}
+
+	@media (max-width: 500px) {
+		font-size: 21px;
+	}
+}
+
+a {
+	text-decoration: none;
+}

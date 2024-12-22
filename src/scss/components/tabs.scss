@@ -1,35 +1,66 @@
-@import "../config/mixins";
+@media (max-width: 1500px) {
+	.tab-title {
+		padding-left: 13px;
+		padding-right: 13px;
+		color: var(--almost-black-color);
+		text-decoration: none;
+		padding: 0.5rem 1rem;
+		border-radius: 8px;
+		gap: 12px;
 
-.tabs {
-	display: flex;
-	gap: rem(10);
-	flex-direction: column;
+		&.blue {
+			color: var(--white-text-color) !important;
+			background: var(--header-background-color);
 
-	// .tabs__nav
-	&__nav {
-		display: flex;
-		gap: rem(10);
-		align-items: center;
-	}
+			& .menu-icon use {
+				fill: var(--white-text-color);
+			}
 
-	// .tabs__trigger
-	&__trigger {
-		padding: rem(10);
-		transition: 0.2s ease-in-out;
+			.menu__arrow-dropdown use {
+				stroke: var(--white-text-color);
+			}
+		}
 
-		&.active {
-			color: #fff;
-			background-color: #ff4040;
+		&:not(.nav-link) {
+			margin-bottom: 0.5rem;
 		}
 	}
 
-	// .tabs__panel
-	&__panel {
-		display: none;
-		animation: fade-up-big 0.4s forwards;
+	.tab {
+		border-radius: 8px;
+		font-size: 16px;
 
 		&.active {
-			display: block;
+			& > .tab-title {
+				color: var(--white-text-color) !important;
+				background: var(--header-background-color);
+
+				& .menu-icon use {
+					fill: var(--white-text-color);
+				}
+
+				.menu__arrow-dropdown {
+					transform: scale(-1);
+				}
+
+				.menu__arrow-dropdown use {
+					stroke: var(--white-text-color);
+				}
+			}
+
+			.tab-list {
+				gap: 0.5rem;
+				border-radius: 0;
+
+				&.active {
+					margin: 1rem 0;
+				}
+
+				& a {
+					background: var(--transparent-menu-item);
+					border-radius: 8px;
+				}
+			}
 		}
 	}
 }
