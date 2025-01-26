@@ -1,20 +1,17 @@
 <!DOCTYPE html>
 <html lang="ru">
-@@include('html/head.html', { 'title': 'Главная' })
+	@@include('html/general/head.html', { 'title': 'Главная' })
 
-<body>
-	@@include('html/header.html', { 'title': 'Header'})
-	<main>
-		@@include('html/post-header.html', {'title': 'Блок под хедером'}) @@include('html/section1.html', {'title':
-		'главный блок'})
-		@@include('html/search.html', {'title': 'search'})
-		@@include('html/services.html', {'title': 'Услуги'}) @@include('html/banner.html', {'title': 'Banner'})
-		@@include('html/sales.html', {'title': 'sales'}) @@include('html/news.html', {'title': 'news'})
-		@@include('html/numbers.html', {'title': 'numbers'}) @@include('html/clients.html', {'title': 'clients'})
-		@@include('html/about_us.html', {'title': 'about_us'}) @@include('html/map.html', {'title':
-		'map'})@@include('html/map2.html', {'title': 'map2'})
-		@@include('html/footer.html', {'title': 'footer'}) @@include('html/arrow.html', {'title': 'arrow'})
-	</main>
-</body>
-
+	<body>
+		@@include('html/general/header.html', { 'title': 'Header'})
+		<main>
+			@@include('html/general/post-header.html', {'title': 'Блок под хедером'}) @@include('html/main_page/section1.html', {'title':
+			'главный блок'}) @@include('html/general/search.html', {'title': 'search'}) @@include('html/main_page/services.html', {'title':
+			'Услуги'}) @@include('html/main_page/banner.html', {'title': 'Banner'}) @@include('html/main_page/sales.html', {'title':
+			'sales'}) @@include('html/general/news.html', {'title': 'news'}) @@include('html/main_page/numbers.html', {'title': 'numbers'})
+			@@include('html/main_page/clients.html', {'title': 'clients'}) @@include('html/main_page/about_us.html', {'title': 'about_us'})
+			@@include('html/main_page/map.html', {'title': 'map'}) @@include('html/main_page/map2.html', {'title': 'map2'})
+			@@include('html/general/footer.html', {'title': 'footer'}) @@include('html/general/arrow.html', {'title': 'arrow'})
+		</main>
+	</body>
 </html>
