@@ -77,6 +77,11 @@
 		}
 	}
 
+	&__button {
+		order: 4;
+		padding: 1rem 1.5rem !important;
+	}
+
 	&__description {
 		font-size: 28px;
 		line-height: 38px;

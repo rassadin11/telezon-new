@@ -1,3 +1,5 @@
+import IMask from 'imask';
+
 // dropdown menu pc
 
 const dropdowns = document.querySelectorAll('.menu__dropdown');
@@ -309,4 +311,49 @@ window.addEventListener('scroll', e => {
     } else {
         arrow.classList.remove('hidden')
     }
+})
+
+// phone input
+let elements = document.querySelectorAll('#phone');
+
+let maskOptions = {
+    mask: '+7 - 000 - 000 - 00 - 00',
+    lazy: false
+}
+
+let telephoneMasks = []
+
+elements.forEach(element => {
+    let mask = new IMask(element, maskOptions);
+    telephoneMasks.push(mask);
+})
+
+let elements2 = document.querySelectorAll('#email');
+
+let maskOptions2 = {
+    mask: function (value) {
+        if (/^[a-z0-9_\.-]+$/.test(value))
+            return true;
+        if (/^[a-z0-9_\.-]+@$/.test(value))
+            return true;
+        if (/^[a-z0-9_\.-]+@[a-z0-9-]+$/.test(value))
+            return true;
+        if (/^[a-z0-9_\.-]+@[a-z0-9-]+\.$/.test(value))
+            return true;
+        if (/^[a-z0-9_\.-]+@[a-z0-9-]+\.[a-z]{1,4}$/.test(value))
+            return true;
+        if (/^[a-z0-9_\.-]+@[a-z0-9-]+\.[a-z]{1,4}\.$/.test(value))
+            return true;
+        if (/^[a-z0-9_\.-]+@[a-z0-9-]+\.[a-z]{1,4}\.[a-z]{1,4}$/.test(value))
+            return true;
+        return false;
+    },
+    lazy: false
+}
+
+let emailMasks = []
+
+elements2.forEach(element2 => {
+    let mask2 = new IMask(element2, maskOptions2);
+    emailMasks.push(mask2);
 })

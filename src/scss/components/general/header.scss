@@ -1,6 +1,7 @@
 body {
 	font-family: "Open Sans", sans-serif;
 	font-size: 16px;
+	background: #fdfdfe;
 }
 
 svg > use {
@@ -344,7 +345,7 @@ p {
 	}
 }
 
-.collapse {
+.collapse_header {
 	&:not(.show) {
 		display: block;
 	}

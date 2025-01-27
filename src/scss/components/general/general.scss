@@ -46,3 +46,164 @@ a {
 	border: 1px solid #4d5eff;
 	border-radius: 8px;
 }
+
+.success {
+	background: rgba(32, 209, 147, 0.1);
+	border: 1px solid rgba(13, 191, 129, 0.4);
+	border-radius: 8px;
+
+	& p {
+		color: #21bf88;
+		font-weight: 600;
+	}
+
+	& svg {
+		width: 27px;
+		height: 27px;
+	}
+
+	& use {
+		fill: #21bf88;
+	}
+}
+
+.warning {
+	background: rgba(227, 163, 25, 0.10000000149011612);
+	border: 1px solid rgba(227, 163, 26, 0.4);
+	border-radius: 8px;
+
+	& p {
+		color: #eaa718;
+		font-weight: 600;
+	}
+
+	& svg {
+		width: 27px;
+		height: 27px;
+	}
+
+	& use {
+		fill: #eaa718;
+	}
+}
+
+.error {
+	background: rgba(209, 32, 103, 0.10000000149011612);
+	border: 1px solid rgba(209, 32, 103, 0.4);
+	border-radius: 6px;
+
+	& p {
+		color: #d12067;
+		font-weight: 600;
+	}
+
+	& svg {
+		width: 27px;
+		height: 27px;
+	}
+
+	& use {
+		fill: #d12067;
+	}
+}
+
+.notification-info {
+	background: rgba(77, 94, 255, 0.10000000149011612);
+	border: 1px solid rgba(77, 94, 255, 0.4);
+	border-radius: 6px;
+
+	& p {
+		color: #4d5eff;
+		font-weight: 600;
+	}
+
+	& svg {
+		width: 27px;
+		height: 27px;
+	}
+
+	& use {
+		fill: #4d5eff;
+	}
+}
+
+.white-btn {
+	font-family: Open Sans;
+	font-weight: 600;
+	font-size: 16px;
+	line-height: 1.3;
+	color: #3f4cca;
+	background: #fff;
+	border: 1px solid #4d5eff;
+	border-radius: 6px;
+	width: 100%;
+	padding: 1rem 0;
+	text-align: center;
+	transition: all 0.3s ease;
+
+	&.active {
+		background: transparent;
+		border: 1px solid #fff;
+		color: #fff;
+	}
+
+	@media (max-width: 768px) {
+		font-weight: 600;
+		font-size: 16px;
+		line-height: 18px;
+		color: #3f4cca;
+		padding: 10px 0;
+	}
+}
+
+.default-input {
+	margin-top: 2rem;
+	font-family: Open Sans;
+	font-style: normal;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 1.3;
+	text-align: left;
+	color: rgba(77, 94, 255);
+	padding: 1rem;
+	width: 100%;
+	outline: none;
+	border: 1px solid #4d5eff;
+	border-radius: 8px;
+
+	&::placeholder {
+		color: rgba(77, 94, 255, 0.4000000059604645);
+	}
+
+	@media (max-width: 992px) {
+		margin-top: 10px;
+	}
+}
+
+.form-title {
+	font-weight: 400;
+	font-size: 28px;
+	color: #00031a;
+
+	@media (max-width: 992px) {
+		font-size: 22px;
+	}
+
+	@media (max-width: 768px) {
+		font-size: 16px;
+	}
+}
+
+.link-strong {
+	font-weight: 600;
+	color: #000;
+
+	&:hover {
+		text-decoration: underline;
+	}
+
+	@media (max-width: 768px) {
+		font-weight: 400;
+		text-decoration: underline;
+	}
+}
