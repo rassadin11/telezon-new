@@ -223,6 +223,10 @@ a {
 		border-right: 3px solid #4d5eff;
 		border-radius: 6px;
 		padding: 0.5rem 1rem;
+
+		p {
+			margin-top: 0 !important;
+		}
 	}
 
 	& > p {
@@ -243,6 +247,10 @@ a {
 	tbody {
 		display: block;
 		padding-right: 2rem;
+
+		@media (max-width: 992px) {
+			padding-right: 0;
+		}
 	}
 
 	&::-webkit-scrollbar {
@@ -284,23 +292,6 @@ a {
 	}
 }
 
-.list {
-	li {
-		position: relative;
-
-		&:before {
-			content: "";
-			width: 4px;
-			height: 4px;
-			position: absolute;
-			top: 10px;
-			left: -10px;
-			background: #000;
-			border-radius: 50%;
-		}
-	}
-}
-
 h1 {
 	font-family: Raleway;
 	font-weight: 700;
@@ -312,8 +303,14 @@ h2 {
 	font-family: Raleway;
 	font-weight: 700;
 	font-size: 38px;
-	line-height: 45px;
+	line-height: 1.3;
 	color: #00031a;
 	margin-bottom: 1.5rem;
 	margin-top: 3rem;
+	font-variant-numeric: lining-nums;
+
+	@media (max-width: 768px) {
+		font-size: 21px;
+		margin-top: 2rem;
+	}
 }

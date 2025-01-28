@@ -4,19 +4,44 @@
 	border: 1px solid #4d5eff;
 	border-radius: 8px;
 	padding: 1rem;
-
-	@media (max-width: 768px) {
-		margin-top: 3rem;
-	}
+	transition: all 0.3s ease;
 
 	& svg {
 		width: 21px;
 		height: 21px;
 		margin-right: 1rem;
+		transition: all 0.3s ease;
 
 		& > use {
 			stroke: #4d5eff;
+			fill: transparent;
 		}
+	}
+
+	input {
+		transition: all 0.3s ease;
+		background: transparent;
+	}
+
+	&:hover {
+		background: rgba(77, 94, 255, 0.2);
+
+		input {
+			background: transparent;
+		}
+	}
+
+	&.focus {
+		svg {
+			width: 0;
+			opacity: 0;
+			visibility: hidden;
+			margin-right: 0;
+		}
+	}
+
+	@media (max-width: 768px) {
+		margin-top: 3rem;
 	}
 }
 

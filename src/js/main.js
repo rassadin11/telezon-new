@@ -1,5 +1,19 @@
 import IMask from 'imask';
 
+// input
+
+const inputs = document.querySelectorAll('.search-input')
+
+inputs.forEach(item => {
+    item.addEventListener('focus', (e) => {
+        e.target.parentNode.classList.toggle('focus');
+    })
+
+    item.addEventListener('blur', (e) => {
+        e.target.parentNode.classList.toggle('focus');
+    })
+})
+
 // dropdown menu pc
 
 const dropdowns = document.querySelectorAll('.menu__dropdown');
