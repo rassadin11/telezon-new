@@ -132,7 +132,7 @@ a {
 	font-weight: 600;
 	font-size: 16px;
 	line-height: 1.3;
-	color: #3f4cca;
+	color: #4d5eff;
 	background: #fff;
 	border: 1px solid #4d5eff;
 	border-radius: 6px;
@@ -151,7 +151,6 @@ a {
 		font-weight: 600;
 		font-size: 16px;
 		line-height: 18px;
-		color: #3f4cca;
 		padding: 10px 0;
 	}
 }
@@ -206,4 +205,115 @@ a {
 		font-weight: 400;
 		text-decoration: underline;
 	}
+}
+
+.white-color {
+	color: var(--white-text-color);
+}
+
+.blockquote {
+	padding: 1rem;
+	border: 1px solid rgba(77, 94, 255, 0.2);
+	border-radius: 8px;
+
+	blockquote {
+		line-height: 1.3;
+		color: #4d5eff;
+		border-left: 3px solid #4d5eff;
+		border-right: 3px solid #4d5eff;
+		border-radius: 6px;
+		padding: 0.5rem 1rem;
+	}
+
+	& > p {
+		font-size: 12px;
+		color: #000000;
+	}
+}
+
+.default-table {
+	width: 100%;
+	border-radius: 6px;
+	max-height: 410px;
+	overflow: auto;
+	display: block;
+	margin-bottom: 3rem;
+	margin-top: 1.5rem;
+
+	tbody {
+		display: block;
+		padding-right: 2rem;
+	}
+
+	&::-webkit-scrollbar {
+		width: 6px;
+	}
+
+	&::-webkit-scrollbar-track {
+		background: rgba(77, 94, 255, 0.2);
+		border-radius: 100px;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background: #8d93cf;
+		width: 6px;
+		border-radius: 100px;
+	}
+
+	tr {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+	}
+
+	th {
+		font-weight: 600;
+		font-size: 16px;
+		line-height: 1.3;
+		color: #4d5eff;
+		background: #f6f7ff;
+		padding: 10px 12px;
+		border: 1px solid #dbdfff;
+	}
+
+	td {
+		font-size: 16px;
+		line-height: 1.3;
+		color: #4d5eff;
+		padding: 10px 12px;
+		border: 1px solid #dbdfff;
+	}
+}
+
+.list {
+	li {
+		position: relative;
+
+		&:before {
+			content: "";
+			width: 4px;
+			height: 4px;
+			position: absolute;
+			top: 10px;
+			left: -10px;
+			background: #000;
+			border-radius: 50%;
+		}
+	}
+}
+
+h1 {
+	font-family: Raleway;
+	font-weight: 700;
+	font-size: 67px;
+	color: #00031a;
+}
+
+h2 {
+	font-family: Raleway;
+	font-weight: 700;
+	font-size: 38px;
+	line-height: 45px;
+	color: #00031a;
+	margin-bottom: 1.5rem;
+	margin-top: 3rem;
 }
