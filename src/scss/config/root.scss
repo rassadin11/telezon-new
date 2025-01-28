@@ -1,10 +1,15 @@
 :root {
 	--header-background-color: #4d5eff;
 	--white-text-color: #fff;
+	--white-background: #fff;
+	--white-gray-background: #fbfbfe;
+	--gray-background: #d9d9d9;
 	--almost-black-color: #00031a;
+	--dark-color: #212529;
 	--blue-color: #4d5eff;
 	--dark-blue-color: #3f4cca;
 	--pink-color: #fa70cc;
+	--bright-pink-color: #c22e91;
 	--black-text-color: #000;
 	--menu-background: #fbfbfe;
 	--transparent-background: rgba(0, 0, 0, 0.3);
@@ -13,11 +18,17 @@
 	--transparent-white-link: rgba(255, 255, 255, 0.2);
 	--transparent-post-header: rgba(181, 190, 198, 0.2);
 	--transparent-news-border: rgba(77, 94, 255, 0.2);
+	--transparent-accordion-color: rgba(77, 94, 255, 0.4);
+	--transparent-checkbox-color: rgba(125, 137, 255, 0.2);
 	--transparent-menu-item: rgba(77, 94, 255, 0.05);
+	--transparent-pink-background-color: rgba(255, 77, 237, 0.1);
+	--transparent-checkbox-pink: rgba(255, 77, 237, 0.2);
+	--transparent-checkbox-bright-pink: rgba(255, 77, 237, 0.4);
 	--transparent-icon: rgba(204, 210, 255, 0.3);
 	--border-light: #8e94cf;
 	--sub-list-link: #303030;
 	--arrow-border: #ccd2ff;
 	--footer-color: #8d93cf;
+	--light-pink: #e097c7;
 	--gray-link: #333;
 }

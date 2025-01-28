@@ -12,7 +12,6 @@
 
 	@media (max-width: 992px) {
 		margin-top: 2rem;
-		margin-bottom: 3rem;
 	}
 
 	@media (max-width: 768px) {
@@ -24,11 +23,11 @@
 .block-address {
 	font-family: Open Sans;
 	font-size: 28px;
-	color: #00031a;
-	background: #ffffff;
-	border: 1px solid rgba(77, 94, 255, 0.2);
+	color: var(--almost-black-color);
+	background: var(--white-background);
+	border: 1px solid var(--transparent-news-border);
 	border-radius: 8px;
-	padding: 4rem;
+	padding: 3rem;
 
 	@media (max-width: 1200px) {
 		padding: 3rem;
@@ -51,7 +50,7 @@
 			&:after {
 				content: "";
 				position: absolute;
-				background: #d9d9d9;
+				background: var(--gray-background);
 				height: 1px;
 				width: 100%;
 				top: -1rem;
@@ -64,7 +63,7 @@
 		font-family: Raleway;
 		font-weight: 700;
 		font-size: 21px;
-		color: #00031a;
+		color: var(--almost-black-color);
 		margin-bottom: 1rem;
 	}
 }
@@ -77,7 +76,7 @@
 	font-weight: 600;
 	font-size: 16px;
 	line-height: 1.3;
-	color: #00031a;
+	color: var(--almost-black-color);
 	margin-top: 1rem;
 
 	& > p:last-child {

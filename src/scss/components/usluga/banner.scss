@@ -28,7 +28,7 @@
 		text-align: right;
 
 		& span {
-			background: #fa70cc;
+			background: var(--pink-color);
 			border-radius: 8px;
 			padding: 0.5rem 1rem;
 			text-transform: uppercase;
@@ -54,7 +54,8 @@
 			font-size: 21px;
 
 			&.mobile {
-				margin-top: 2rem;
+				margin-top: 1rem;
+				margin-bottom: 2rem;
 			}
 		}
 	}
@@ -82,14 +83,14 @@
 		font-weight: 700;
 		font-size: 38px;
 		line-height: 45px;
-		color: #00031a;
+		color: var(--almost-black-color);
 		font-variant-numeric: lining-nums;
 		background: var(--white-text-color);
 		padding: 0.5rem 1rem;
 		border-radius: 100px;
 		border: none;
 		margin-top: 2.5rem;
-		margin-bottom: 4rem;
+		margin-bottom: 6.5rem;
 
 		@media (max-width: 992px) {
 			font-size: 29px;

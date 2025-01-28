@@ -11,6 +11,11 @@
 	@media (max-width: 992px) {
 		grid-template-columns: 1fr;
 		margin-top: 1rem;
+		margin-bottom: 5rem;
+	}
+
+	@media (max-width: 768px) {
+		margin-bottom: 2rem;
 	}
 
 	&__description {
@@ -19,7 +24,7 @@
 		font-size: 28px;
 		text-align: left;
 		margin-top: 1rem;
-		color: #000000;
+		color: var(--black-text-color);
 
 		@media (max-width: 992px) {
 			margin-left: 0.5rem;
@@ -34,10 +39,10 @@
 	}
 }
 
-.numbers__item {
+.numbers-items__item {
 	padding: 2rem;
-	background: #ffffff;
-	border: 1px solid rgba(77, 94, 255, 0.2);
+	background: var(--white-background);
+	border: 1px solid var(--transparent-news-border);
 	border-radius: 8px;
 	justify-content: space-between;
 
@@ -56,13 +61,17 @@
 .numbers-item__icon {
 	width: 46px;
 	height: 46px;
-	background: rgba(77, 94, 255, 0.05);
+	background: var(--transparent-menu-item);
 	padding: 14px;
 	border-radius: 6px;
 	box-sizing: content-box;
 
 	& use {
 		fill: var(--header-background-color);
+	}
+
+	@media (max-width: 768px) {
+		flex: 0 0 46px;
 	}
 }
 

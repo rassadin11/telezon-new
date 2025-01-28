@@ -2,7 +2,7 @@
 	grid-template-columns: 1fr 1fr;
 	gap: 2rem;
 	flex-wrap: wrap;
-	margin-top: 6rem;
+	margin-top: 4rem;
 	margin-bottom: 10rem;
 
 	& > * {
@@ -12,7 +12,7 @@
 	@media (max-width: 992px) {
 		grid-template-columns: 1fr;
 		gap: 0;
-		margin-top: 3rem;
+		margin-top: 1rem;
 		margin-bottom: 5rem;
 	}
 
@@ -39,7 +39,7 @@
 .accordion-body {
 	font-size: 21px;
 	line-height: 1.2;
-	color: #00031a;
+	color: var(--almost-black-color);
 
 	@media (max-width: 768px) {
 		font-size: 12px;
@@ -47,8 +47,8 @@
 }
 
 .accordion-button {
-	background: #ffffff;
-	border: 1px solid rgba(77, 94, 255, 0.2);
+	background: var(--white-background);
+	border: 1px solid var(--transparent-news-border);
 	border-radius: 8px;
 	border-bottom-right-radius: 8px !important;
 	border-bottom-left-radius: 8px !important;
@@ -70,7 +70,7 @@
 
 .accordion-button:focus {
 	box-shadow: none;
-	border-color: rgba(77, 94, 255, 0.2);
+	border-color: var(--transparent-news-border);
 	background-color: inherit;
 }
 
@@ -81,8 +81,12 @@
 }
 
 .accordion-body {
-	background: rgba(77, 94, 255, 0.05);
+	background: var(--transparent-menu-item);
 	border-radius: 0px 0px 8px 8px;
+
+	@media (max-width: 768px) {
+		padding: 10px 1rem;
+	}
 }
 
 .accordion-button::after {
@@ -102,7 +106,7 @@
 	border-radius: 6px;
 	height: 36px;
 	padding: 12px;
-	background: rgba(77, 94, 255, 0.05);
+	background: var(--transparent-menu-item);
 	box-sizing: content-box;
 
 	@media (max-width: 768px) {
@@ -115,14 +119,14 @@
 }
 
 .accordion-button:not(.collapsed) .accordion-icon {
-	background: rgba(77, 94, 255, 0.4);
+	background: var(--transparent-accordion-color);
 }
 
 .accordion-icon::before,
 .accordion-icon::after {
 	content: "";
 	position: absolute;
-	background-color: #4d5eff;
+	background-color: var(--blue-color);
 	transition: transform 0.3s ease;
 	opacity: 1;
 	visibility: visible;
