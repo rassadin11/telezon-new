@@ -11,7 +11,7 @@ const createSvgSprite = () => {
       svgSprite({
         mode: {
           symbol: {
-            sprite: '../sprite.svg',
+            sprite: './sprite.svg',
 
             /** Создавать страницу с перечнем иконок */
             example: true,
